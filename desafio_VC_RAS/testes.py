@@ -1,3 +1,4 @@
+from matplotlib.pyplot import imshow
 import numpy as np
 import cv2 as cv
 import shutil
@@ -6,7 +7,7 @@ import pytesseract
 import os
 import random
 
-img = cv.imread('images/placaARG.jpeg')
+img = cv.imread('desafio_VC_RAS/images/placaARG.jpeg')
 imgResize = cv.resize(img, (962,623))
 cv.imshow("Color",imgResize)
 
@@ -21,6 +22,9 @@ cv.imshow("Edge Cascaded image",canny)
 
 dilated = cv.dilate(canny,(7,7),iterations=3)
 cv.imshow("dilated images",dilated)
+
+imgHSV = cv.cvtColor(imgResize, cv.COLOR_BGR2HSV)
+cv.imshow("imgHSV", imgHSV)
 
 cv.waitKey(0)
 
